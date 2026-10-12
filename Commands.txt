@@ -1,0 +1,230 @@
+DATA DEFINITION LANGUAGE(DDL):
+
+1.CREATE Command:
+
+Definition:The CREATE command is a DDL command used to create database objects such as Databases and tables.
+
+ To Create a database
+ Syntax:CREATE DATABASE databse_name;
+ Example:CREATE DATABASE college;
+
+ To Create a table
+ Syntax:CREATE TABLE table_name(
+    column1 datatype,
+    column2 datatype,
+    column3 datatype
+);
+Example:CREATE TABLE students(
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT NOT NULL,
+    email VARCHAR(100)
+);
+
+2.ALTER Command:
+ 
+Definition:The ALTER Command is a DDL Command used to modify the structure of an existing database objects,such as adding ,deleting, or modifying columns in a table.
+
+Syntax:ALTER TABLE table_name
+       action;  //where the action may be add, deleting or modifying.
+Example: A.Add a new column
+
+            ALTER TABLE students
+            ADD COLUMN email VARCHAR(100);
+
+ B.Modifying a column's data type:
+
+   ALTER TABLE students
+   MODIFY COLUMN name VARCHAR(100);
+
+ C.Rename a Column:
+
+   ALTER TABLE students
+   RENAME COLUMN name TO students_name;
+
+ D.Drop a column:
+
+   ALTER TABLE students
+   DROP COLUMN age;
+
+ E.Rename a Table:
+
+   ALTER TABLE students
+   RENAME TO learners;
+
+3.DROP Command:
+
+Definition: The DROP command is a DDL command used to permanently remove database objects, such as tables and databases.
+
+- To DROP a Table:
+Syntax:
+       DROP TABLE table_name;
+ExampleL:DROP TABLE students;
+
+- To DROP a database:
+syntax:
+       DROP DATABASE database_name;
+Example:DROP DATABASE college;
+
+- To DROP a column:
+syntax:
+       ALTER TABLE table_name
+       DROP COLUMN column_name;
+Example:ALTER TABLE students
+        DROP COLUMN age;
+
+- To DROP a table only if it exists:
+syntax:
+       DROP TABLE IF EXISTS table_name;
+Example:DROP TABLE IF EXISTS teachers;
+
+4.TRUNCATE Command:
+
+Definition:The TRUNCATE Command is a DDL Command used to remove all the records from a table while keeping its table structure.
+Syntax:
+       TRUNCATE TABLE table_name;
+Example:TRUNCATE TABLE students;
+
+5.RENAME Command:
+Defintion: The RENAME command is used to change name of the existing table in MySQL
+Syntax:
+       RENAME TABLE old_table_name TO new_table_name;
+Example:RENAME TABLE students TO learners;
+
+- Rename a column:
+syntax:
+       ALTER TABLE students
+       RENAME COLUMN name TO students_name;
+
+DATA MANIPULATION LANGUAGE(DML):
+
+1.INSERT Command:
+
+Definition: The INSERT Command is a DML command used to add new records(rows) into an existing table.
+Syntax:
+       INSERT INTO table_name(column1,column2,column3)
+       VALUES (value1,value2,value3);
+Example: INSERT INTO students(id,name,age)
+         VALUES
+         (1,'BALAJI',21)
+         (2,'KIRAN',23)
+Insert values without specifying column names:
+Syntax:
+       INSERT INTO students
+       VALUES(1,'balu',21);
+       //here values must match the table's column order.
+
+2.UPDATE Command:
+Defintion: The UPDATE Command is a DML command used to modify existing records in a table.
+- UPDATE one column:
+Syntax:
+       UPDATE tabel_name
+       SET column_name=value
+       WHERE condition;
+Example:
+        UPDATE students
+        SET age=22
+        WHERE id=1;
+
+- UPDATE multiple columns;
+syntax:
+       UPDATE students
+       SET age=1,name='balaji'
+       WHERE id=1;
+
+- UPDATE all records(rows):
+Syntax:
+       UPDATE students
+       SET age=23;
+
+3.DELETE Command:
+Definition: The DELETE Command is a DML command used to remove existing records(rows) from the table
+Syntax:
+       DELETE FROM table_name
+       WHERE condition;
+Exaple:
+       DELETE FROM students
+       WHERE id =1;
+
+- DELETE all records(rows):
+syntax: DELETE FROM table_name; or TRUNCATE TABLE table_name;
+
+ DATA QUERY LANGUAGE(DQL):
+
+1.SELECT Command:
+Defintion:The SELECT command is a DQL command commonly used to retrieve data from one or more database tables.
+Syntax:
+        SELECT column1,column2
+        FROM table_name
+        WHERE condition;
+Example:
+        SELECT id,name
+        FROM students
+        WHERE age>=18;
+- To Display all columns:
+syntax:
+       SELECT * FROM tabel_name;
+Example:SELECT * FROM students;
+
+ TRANSACTION CONTROL LANGUAGE(TCL):
+ 
+ 1.COMMIT Command:
+Definition: The COMMIT Command is a TCL Command used to permanently saves the changes made during the current transaction in a database.
+Syntax:
+     COMMIT;
+Example:
+     START TRANSACTION;\
+
+     UPDATE students
+     SET age=23
+     WHERE id=1;
+     
+     COMMIT;
+
+ 2.ROLLBACK Command:
+ Definition: The ROLLBACK Command is a TCL Command used to undo changes made during the current transaction that have not yet been committed.
+ Syntax:
+        ROLLBACK;
+Example:
+        START TRANSACTION;
+
+        INSERT INTO students
+        VALUES(1,'subbu',21);
+
+        ROLLBACK;
+RESULT: The Insert record is undone.
+
+3.SAVEPOINT Command:
+Definition: The SAVEPOINT command is a TCL command used to create a named points inside a transaction so that you can roll back part of the transaction without undoing all changes.
+Syntax:
+       SAVEPOINT savepoint name;
+Example:
+       START TRANSACTION;
+
+       INSERT INTO students(id,name,age)
+       VALUES(1,'ravi',21);
+
+       SAVEPOINT sp1;
+
+       INSERT INTO students(id,name,age);
+       VALUES(2,'balu',23);
+
+       SAVEPOINT sp2;
+
+       INSERT INTO students
+       VALUES(3,'Balu',21);
+
+       ROLLBACK TO SAVEPOINT sp2;
+
+       COMMIT;
+
+
+
+
+
+OTHER USEFUL COMMANDS:
+
+1.SHOW DATABASES;     - Used to Display all DATABASES.
+2.USE college;        - Selects a database which we want to work on that.
+3.SHOW TABLES;        - Used to Display tables
+4.DESC or DESCRIBE students - Used to Display table Structure

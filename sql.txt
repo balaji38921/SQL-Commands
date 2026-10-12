@@ -1,0 +1,43 @@
+SQL Stands for Structured Query Language
+SQL is a Language used to communicate with databases. which is used to retrive,insert,update,delete and analyze data.
+
+Types of SQL Commands - 4 Types
+1. DDL(Data Definition Language)
+  -CREATE -> Creates new databases or table
+  -ALTER  -> Changes table Structure
+  -DROP   -> Deletes database or table
+  -TRUNCATE -> Deletes all data from table
+  -RENAME ->Changes table name
+
+2. DML(data Manipulation Language)
+  -INSERT  -> Adds new data
+  -UPDATE  -> changes existing data
+  -DELETE  ->Removes data
+
+3. DQL(Data Query Language)
+  -SELECT ->Gets data from table
+
+4. TCL(Transaction Control Language)
+  -COMMIT  -> Saves changes permanently
+  -ROLLBACK  ->Undoes changes
+  -SAVEPOINT  ->Creates rollback point
+
+SQL Data Types
+  Data types define what kind of data the column can store like,Numbers,dates,text etc. 
+  -INT -> Stores Numbers
+  -VARCHAR -> Stores text
+  -FLOAT -> Stores decimal values
+  -DATE -> Stores date
+  -BOOLEAN -> Stores true or false
+
+SQL Constraints
+  Constraints are the rules applied to table columns to control what data can be stored.
+  They ensure data is correct,valid and consistent.
+
+ Constraint            Purpose            Example
+ PRIMARY KEY         Unique identifier    id=1
+ NOT NULL            Cannot be empty      name required
+ UNIQUE              No duplicated values unique email
+ CHECK               Limits allowed values age>=18
+ DEFAULT             Sets default value   course='SQL'
+ 

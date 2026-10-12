@@ -1,0 +1,13 @@
+Data is raw information.
+Database is an collection of Organized data.
+DBMS stands for Database Management System, is a software used to create,store,retrive,organize,delete,update the data in a database.
+  
+                            DBMS
+                             /\
+                    SQL(RDBMS)  NoSQL(databases)
+EX:MySQL,PostgreSQL,Oracle,etc  EX:MongoDB,Redise,Firebase
+
+How does a DBMS work?
+
+User/Application                   -   DBMS software                        -  Database
+(Requests data or submit changes)     (Processes queries and manages data)     (Stores organized information)
